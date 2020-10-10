@@ -9,7 +9,9 @@
 import UIKit
 import CoreBluetooth
 
-class PeripheralChatBox: UIViewController, CBPeripheralManagerDelegate, UITextViewDelegate, UITextFieldDelegate{
+
+
+class PeripheralChatBox:  UIViewController, CBPeripheralManagerDelegate, UITextViewDelegate, UITextFieldDelegate{
     
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         if peripheral.state == .poweredOn {
@@ -34,12 +36,23 @@ class PeripheralChatBox: UIViewController, CBPeripheralManagerDelegate, UITextVi
     override func viewDidLoad() {
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil, options: [CBPeripheralManagerOptionShowPowerAlertKey: true])
         super.viewDidLoad()
+        baseTextView.isUserInteractionEnabled = true //キーボードを出したくない
+        baseTextView.isEditable = false //キーボードを出したくない
+        baseTextView.isSelectable = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         peripheralManager.stopAdvertising()
         super.viewWillDisappear(animated)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+    }
+    
+    @IBAction func getText(sender : UITextField) {
+    }
+    
     
     @IBAction func switchChanged(_ sender: Any) {
         if advertisingSwitch.isOn {
@@ -52,7 +65,7 @@ class PeripheralChatBox: UIViewController, CBPeripheralManagerDelegate, UITextVi
     @IBAction func clickSendAction(_ sender: AnyObject) {
         outgoingData()
     }
-    
+
     func outgoingData() {
         let appendString = "\n"
         
@@ -69,6 +82,9 @@ class PeripheralChatBox: UIViewController, CBPeripheralManagerDelegate, UITextVi
         
         consoleAsciiText = newAsciiText
         baseTextView.attributedText = consoleAsciiText
+        baseTextView.isUserInteractionEnabled = true //キーボードを出したくない
+        baseTextView.isEditable = false //キーボードを出したくない
+        baseTextView.isSelectable = false
         //erase what's in the text field
         inputTextField.text = ""
     }
@@ -81,6 +97,7 @@ class PeripheralChatBox: UIViewController, CBPeripheralManagerDelegate, UITextVi
             }
         }
     }
+    
 }
 
 fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
@@ -92,3 +109,4 @@ fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [Stri
     guard let input = input else { return nil }
     return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }
+
