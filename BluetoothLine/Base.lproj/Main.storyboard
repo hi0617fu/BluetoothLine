@@ -114,17 +114,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5b-ZB-fVh" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vfo-SN-KIQ" userLabel="Input Text  Field">
-                                                <rect key="frame" x="8" y="660" width="331" height="34"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="iEu-Z6-jft" id="iG2-ie-mVM"/>
-                                                </connections>
-                                            </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="メッセージを送信してください" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mKe-f6-TrT">
-                                                <rect key="frame" x="8" y="62" width="398" height="575"/>
+                                                <rect key="frame" x="8" y="110" width="398" height="575"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -133,8 +124,17 @@
                                                     <outlet property="delegate" destination="iEu-Z6-jft" id="vMf-xn-e2R"/>
                                                 </connections>
                                             </textView>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vfo-SN-KIQ" userLabel="Input Text  Field">
+                                                <rect key="frame" x="8" y="30" width="331" height="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="iEu-Z6-jft" id="iG2-ie-mVM"/>
+                                                </connections>
+                                            </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8J-l9-rgd" userLabel="Send Button">
-                                                <rect key="frame" x="355" y="664" width="31" height="30"/>
+                                                <rect key="frame" x="355" y="30" width="31" height="34"/>
                                                 <state key="normal" title="送信"/>
                                                 <connections>
                                                     <action selector="clickSendAction:" destination="iEu-Z6-jft" eventType="touchUpInside" id="3IB-eQ-EFn"/>
@@ -143,15 +143,16 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="V8J-l9-rgd" firstAttribute="leading" secondItem="Vfo-SN-KIQ" secondAttribute="trailing" constant="16" id="550-rR-obK"/>
-                                            <constraint firstItem="mKe-f6-TrT" firstAttribute="leading" secondItem="Vfo-SN-KIQ" secondAttribute="leading" id="7Rm-qg-WG2"/>
+                                            <constraint firstAttribute="bottom" secondItem="mKe-f6-TrT" secondAttribute="bottom" constant="51" id="6YO-D0-v8M"/>
+                                            <constraint firstItem="Vfo-SN-KIQ" firstAttribute="top" secondItem="V8J-l9-rgd" secondAttribute="top" id="8J8-3k-dJs"/>
+                                            <constraint firstItem="mKe-f6-TrT" firstAttribute="leading" secondItem="Vfo-SN-KIQ" secondAttribute="leading" id="BjE-bf-Aeb"/>
+                                            <constraint firstItem="Vfo-SN-KIQ" firstAttribute="top" secondItem="H5b-ZB-fVh" secondAttribute="top" constant="30" id="H97-ao-LRy"/>
                                             <constraint firstItem="mKe-f6-TrT" firstAttribute="leading" secondItem="H5b-ZB-fVh" secondAttribute="leadingMargin" id="RVO-43-qLC"/>
                                             <constraint firstAttribute="trailing" secondItem="V8J-l9-rgd" secondAttribute="trailing" constant="28" id="V4b-f5-k9h"/>
-                                            <constraint firstAttribute="bottom" secondItem="Vfo-SN-KIQ" secondAttribute="bottom" constant="42" id="a3C-QT-CIb"/>
-                                            <constraint firstItem="Vfo-SN-KIQ" firstAttribute="bottom" secondItem="V8J-l9-rgd" secondAttribute="bottom" id="bmx-Bi-49H"/>
+                                            <constraint firstItem="mKe-f6-TrT" firstAttribute="top" secondItem="Vfo-SN-KIQ" secondAttribute="bottom" constant="46" id="cTX-GW-IMS"/>
                                             <constraint firstItem="mKe-f6-TrT" firstAttribute="trailing" secondItem="H5b-ZB-fVh" secondAttribute="trailingMargin" id="fzH-NU-Wkx"/>
-                                            <constraint firstItem="Vfo-SN-KIQ" firstAttribute="top" secondItem="mKe-f6-TrT" secondAttribute="bottom" constant="23" id="neE-lr-7cC"/>
-                                            <constraint firstItem="mKe-f6-TrT" firstAttribute="top" secondItem="H5b-ZB-fVh" secondAttribute="top" constant="62" id="zJT-XB-CB1"/>
+                                            <constraint firstItem="Vfo-SN-KIQ" firstAttribute="bottom" secondItem="V8J-l9-rgd" secondAttribute="bottom" id="sXI-cG-6Np"/>
+                                            <constraint firstItem="V8J-l9-rgd" firstAttribute="leading" secondItem="Vfo-SN-KIQ" secondAttribute="trailing" constant="16" id="xJN-Jr-8nq"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -159,18 +160,18 @@
                                     <constraint firstAttribute="trailing" secondItem="H5b-ZB-fVh" secondAttribute="trailing" constant="-1" id="0Nq-00-cp2"/>
                                     <constraint firstItem="H5b-ZB-fVh" firstAttribute="centerX" secondItem="4Xg-5s-SpB" secondAttribute="centerX" id="7m0-fg-yb1"/>
                                     <constraint firstAttribute="bottom" secondItem="H5b-ZB-fVh" secondAttribute="bottom" id="80C-Xw-l3S"/>
-                                    <constraint firstItem="H5b-ZB-fVh" firstAttribute="top" secondItem="4Xg-5s-SpB" secondAttribute="top" id="FLD-WV-oHM"/>
+                                    <constraint firstItem="H5b-ZB-fVh" firstAttribute="top" secondItem="4Xg-5s-SpB" secondAttribute="top" id="9jA-ii-Z9S"/>
                                     <constraint firstItem="H5b-ZB-fVh" firstAttribute="leading" secondItem="4Xg-5s-SpB" secondAttribute="leading" id="FwR-Wu-BDq"/>
-                                    <constraint firstItem="H5b-ZB-fVh" firstAttribute="centerY" secondItem="4Xg-5s-SpB" secondAttribute="centerY" id="hUx-uD-hXe"/>
+                                    <constraint firstItem="H5b-ZB-fVh" firstAttribute="centerY" secondItem="4Xg-5s-SpB" secondAttribute="centerY" id="Fxa-hk-sp9"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4Xg-5s-SpB" firstAttribute="leading" secondItem="MgD-jH-gFv" secondAttribute="leading" id="GKl-kz-dTj"/>
+                            <constraint firstItem="4Xg-5s-SpB" firstAttribute="bottom" secondItem="MgD-jH-gFv" secondAttribute="bottomMargin" id="UOO-fZ-g4D"/>
                             <constraint firstAttribute="trailing" secondItem="4Xg-5s-SpB" secondAttribute="trailing" id="VYx-H1-daz"/>
-                            <constraint firstItem="4Xg-5s-SpB" firstAttribute="top" secondItem="sVj-nl-uF7" secondAttribute="bottom" id="YNM-9p-TqY"/>
-                            <constraint firstItem="4Xg-5s-SpB" firstAttribute="bottom" secondItem="rc5-Cs-ZYb" secondAttribute="top" id="alp-kg-cOD"/>
+                            <constraint firstItem="4Xg-5s-SpB" firstAttribute="top" secondItem="MgD-jH-gFv" secondAttribute="topMargin" id="b8Z-7Q-19f"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="aga-y1-3GD" userLabel="Navigation Item">

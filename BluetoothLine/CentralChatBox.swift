@@ -43,6 +43,9 @@ class CentralChatBox: UIViewController, CBPeripheralManagerDelegate, UITextViewD
         self.inputTextField.layer.borderWidth = 2.0
         self.inputTextField.layer.borderColor = UIColor.blue.cgColor
         self.inputTextField.layer.cornerRadius = 3.0
+        baseTextView.isUserInteractionEnabled = true //キーボードを出したくない
+        baseTextView.isEditable = false //キーボードを出したくない
+        baseTextView.isSelectable = false
         //Create and start the peripheral manager
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
         //-Notification for updating the text view with incoming text
@@ -64,7 +67,7 @@ class CentralChatBox: UIViewController, CBPeripheralManagerDelegate, UITextViewD
             let appendString = "\n"
             let myFont = UIFont(name: "Helvetica Neue", size: 15.0)
             let myAttributes2 = [convertFromNSAttributedStringKey(NSAttributedString.Key.font): myFont!, convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.red]
-            let attribString = NSAttributedString(string: "[Incoming]: " + (characteristicASCIIValue as String) + appendString, attributes: convertToOptionalNSAttributedStringKeyDictionary(myAttributes2))
+            let attribString = NSAttributedString(string: "[Peripheral]: " + (characteristicASCIIValue as String) + appendString, attributes: convertToOptionalNSAttributedStringKeyDictionary(myAttributes2))
             let newAsciiText = NSMutableAttributedString(attributedString: self.consoleAsciiText!)
             self.baseTextView.attributedText = NSAttributedString(string: characteristicASCIIValue as String , attributes: convertToOptionalNSAttributedStringKeyDictionary(myAttributes2))
             
@@ -90,7 +93,7 @@ class CentralChatBox: UIViewController, CBPeripheralManagerDelegate, UITextViewD
         
         writeValue(data: inputText!)
         
-        let attribString = NSAttributedString(string: "[Outgoing]: " + inputText! + appendString, attributes: convertToOptionalNSAttributedStringKeyDictionary(myAttributes1))
+        let attribString = NSAttributedString(string: "[Central]: " + inputText! + appendString, attributes: convertToOptionalNSAttributedStringKeyDictionary(myAttributes1))
         let newAsciiText = NSMutableAttributedString(attributedString: self.consoleAsciiText!)
         newAsciiText.append(attribString)
         
