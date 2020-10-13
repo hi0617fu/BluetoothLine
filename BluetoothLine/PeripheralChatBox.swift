@@ -112,6 +112,19 @@ class PeripheralChatBox:  UIViewController, CBPeripheralManagerDelegate, UITextV
         }
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x:0, y:250), animated: true)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        scrollView.setContentOffset(CGPoint(x:0, y:0), animated: true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        outgoingData()
+        return(true)
+    }
 }
 
 fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
